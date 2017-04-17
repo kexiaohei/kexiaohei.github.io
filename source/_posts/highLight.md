@@ -9,6 +9,8 @@ date: 2017-04-15 09:32:14
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 
+<!--more-->
+
 ### OK！代码块这样写： 
 
 	<pre>
