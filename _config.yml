@@ -7,7 +7,9 @@ title: 柯小黑的异次元
 subtitle:
 description:
 author: 柯小黑
-language: zh-Hans
+language: 
+- zh-Hans
+- en
 timezone:
 
 # URL
