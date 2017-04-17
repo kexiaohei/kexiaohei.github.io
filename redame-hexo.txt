@@ -1,0 +1,36 @@
+先安装node.js
+
+
+本地hexo
+$ npm install hexo-cli -g
+$ hexo init blog
+$ cd blog
+$ npm install
+$ hexo server
+本地访问：localhost:4000
+
+
+_config.yml必要参数修改
+ title: 柯小黑的博客    //你博客的名字
+ author: 柯小黑 //你的名字
+ language: zh-Hans    //语言 中文
+ theme: landscape  //安装的主题名称
+ deploy:
+   type: git    //使用Git 发布
+   repo: https://github.com/username/username.github.io.git    // 刚创建的Github仓库
+
+
+
+
+自动部署发布工具
+$ npm install hexo-deployer-git --save
+
+
+
+发布
+$ hexo clean && hexo g && hexo d
+
+
+
+
+访问https://kdsf.github.io/
