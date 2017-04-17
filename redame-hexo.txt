@@ -9,6 +9,10 @@ $ npm install
 $ hexo server
 本地访问：localhost:4000
 
+下载主题
+$ cd ownername.github.io
+$ git clone https://github.com/iissnan/hexo-theme-next themes/next
+
 
 _config.yml必要参数修改
  title: 柯小黑的博客    //你博客的名字
@@ -17,7 +21,8 @@ _config.yml必要参数修改
  theme: landscape  //安装的主题名称
  deploy:
    type: git    //使用Git 发布
-   repo: https://github.com/username/username.github.io.git    // 刚创建的Github仓库
+   repo: https://github.com/ownername/ownername.github.io.git    // 刚创建的Github仓库
+   branch: master//分支名称
 
 
 
@@ -33,4 +38,4 @@ $ hexo clean && hexo g && hexo d
 
 
 
-访问https://kdsf.github.io/
+访问https://ownername.github.io/
