@@ -8,7 +8,7 @@
     </span>
     <div class="local-search-input-wrapper">
       <input autocapitalize="off" autocomplete="off" autocorrect="off"
-             placeholder="输入关键字开始搜索..." autofocus="autofocus" spellcheck="false"
+             placeholder="{{ __('search.placeholder') }}" spellcheck="false"
              type="text" id="local-search-input">
     </div>
   </div>
