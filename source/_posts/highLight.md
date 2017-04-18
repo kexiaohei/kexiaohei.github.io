@@ -37,6 +37,50 @@ date: 2017-04-15 09:32:14
     }
     printStr(name);
 
+### 显示行号
+
+	    <style>/*行号样式可以根据情境自己调整*/
+	        pre {
+	            position: relative;
+	            overflow: hidden;
+	        }
+	
+	        code.has-numbering {
+	            margin-left: 21px;
+	        }
+	
+	        .pre-numbering {
+	            position: absolute;
+	            top: 0;
+	            left: 0;
+	            width: 20px;
+	            padding: 7px 0;
+				margin: 0;
+	            border-right: 1px solid #C3CCD0;
+	            border-radius: 3px 0 0 3px;
+	            text-align: center;
+	            font-family: Menlo, monospace;
+	            color: #AAA;
+	        }
+	    </style>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script>/*行号显示 依赖jquery*/
+	    $(function(){
+	        $('pre code').each(function(){
+	            var lines = $(this).text().split('\n').length - 1;
+	            var $numbering = $('<ul/>').addClass('pre-numbering');
+	            $(this)
+	                    .addClass('has-numbering')
+	                    .parent()
+	                    .append($numbering);
+	            for(i=1;i<=lines;i++){
+	                $numbering.append($('<li/>').text(i));
+	            }
+	        });
+	    });
+	</script>
+
+
 ### 主题可以更换，更换不同的css样式表，以展示不同效果
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/agate.min.css">
@@ -48,3 +92,43 @@ date: 2017-04-15 09:32:14
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/docco.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+    <style>/*行号样式可以根据情境自己调整*/
+        pre {
+            position: relative;
+            overflow: hidden;
+        }
+
+        code.has-numbering {
+            margin-left: 21px;
+        }
+
+        .pre-numbering {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            padding: 7px 0;
+			margin: 0;
+            border-right: 1px solid #C3CCD0;
+            border-radius: 3px 0 0 3px;
+            text-align: center;
+            font-family: Menlo, monospace;
+            color: #AAA;
+        }
+    </style>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>/*行号显示 依赖jquery*/
+    $(function(){
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering');
+            $(this)
+                    .addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+    });
+</script>
