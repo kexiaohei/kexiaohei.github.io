@@ -18,7 +18,7 @@ date: 2017-04-18 15:24:36
     <meta charset="UTF-8">
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
-    <title></title>
+    <title>avoid dot</title>
     <style type="text/css">
         body, html {
             background-color: #222222;
