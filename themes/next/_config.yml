@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "柯小黑, 前端技术, 分享, 段子, 随缘"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -195,7 +195,7 @@ sidebar:
   b2t: false
 
   # Scroll percent label in b2t button
-  scrollpercent: false
+  scrollpercent: true
 
 
 # Blog rolls
