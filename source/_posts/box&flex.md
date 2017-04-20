@@ -1,5 +1,5 @@
 ---
-title: box&flex
+title: box & flex
 date: 2017-04-19 18:34:14
 ---
 整理了一下，关于弹性盒子或者叫流布局，新旧方式的兼容写法。可能会有更多的坑，遇到再补充。
@@ -17,7 +17,7 @@ date: 2017-04-19 18:34:14
 	    position: relative;
 	}
 	
-	.ub-ver {
+	.ub-v {
 	    -webkit-box-orient: vertical;
 	    -moz-box-orient: vertical;
 	    -ms-flex-direction: column;
@@ -70,45 +70,67 @@ date: 2017-04-19 18:34:14
 ### display：flex
 
 ```
-	.flex {
+	.uf {
 	    display: -webkit-box;
 	    display: -webkit-flex;
 	    display: -ms-flexbox;
 	    display: flex;
+	    position: relative;
 	}
 	
-	.flex-v {
+	.uf-v {
 	    -webkit-box-orient: vertical;
 	    -webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	    flex-direction: column;
 	}
 	
-	.flex-1 {
-	    -webkit-box-flex: 1;
-	    -webkit-flex: 1;
-	    -ms-flex: 1;
-	    flex: 1;
-	}
-	
-	.flex-align-center {
+	.uf-ac {
 	    -webkit-box-align: center;
 	    -webkit-align-items: center;
 	    -ms-flex-align: center;
 	    align-items: center;
 	}
 	
-	.flex-pack-center {
+	.uf-ae {
+	    -webkit-box-align: end;
+	    -webkit-align-items: flex-end;
+	    -ms-flex-align: end;
+	    align-items: flex-end;
+	}
+	
+	.uf-pc {
 	    -webkit-box-pack: center;
 	    -webkit-justify-content: center;
 	    -ms-flex-pack: center;
 	    justify-content: center;
 	}
 	
-	.flex-pack-justify {
+	.uf-pe {
+	    -webkit-box-pack: end;
+	    -webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
+	    justify-content: flex-end;
+	}
+	
+	.uf-pj {
 	    -webkit-box-pack: justify;
 	    -webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	    justify-content: space-between;
+	}
+	
+	.uf-pja {
+	    -webkit-box-pack: justify;
+	    -webkit-justify-content: space-around;
+	    -ms-flex-pack: justify;
+	    justify-content: space-around;
+	}
+	
+	.uf-f {
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1;
+	    -ms-flex: 1;
+	    flex: 1;
 	}
 ```
