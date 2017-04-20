@@ -2,7 +2,7 @@
 title: box & flex
 date: 2017-04-19 18:34:14
 ---
-整理了一下，关于弹性盒子或者叫流布局，新旧方式的兼容写法。可能会有更多的坑，遇到再补充。
+整理了一下，关于弹性盒子或者叫流布局，box & flex的兼容写法。前者是2009年的语法，已经过时；后者是2012年的语法，也是现在的标准语法。但实际情况下两者有明显的差别，在实际的浏览器测试中，flex并不能完全替代box。在开发过程中遇到很多兼容性方面的坑，因此分别整理了一下两者的兼容写法。以后可能还会有更多的坑，遇到再补充。
 
 <!--more-->
 ### display：box
@@ -17,7 +17,7 @@ date: 2017-04-19 18:34:14
 	    position: relative;
 	}
 	
-	.ub-v {
+	.ub-ver {
 	    -webkit-box-orient: vertical;
 	    -moz-box-orient: vertical;
 	    -ms-flex-direction: column;
@@ -78,7 +78,7 @@ date: 2017-04-19 18:34:14
 	    position: relative;
 	}
 	
-	.uf-v {
+	.uf-ver {
 	    -webkit-box-orient: vertical;
 	    -webkit-flex-direction: column;
 	    -ms-flex-direction: column;
