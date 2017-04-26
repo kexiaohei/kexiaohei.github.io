@@ -39,3 +39,10 @@ $ hexo clean && hexo g && hexo d
 
 
 访问https://ownername.github.io/
+
+
+
+
+百度分析：
+账号：柯小黑
+密码：kingds1992
