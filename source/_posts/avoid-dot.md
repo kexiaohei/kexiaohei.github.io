@@ -432,4 +432,4 @@ date: 2017-04-18 15:24:36
 3. 用浏览器打开这个文件，开始游戏。
 
 ### 游戏截图
-![游戏截图](http://i.imgur.com/GIBXVSO.png)
+![游戏截图](/postSource/avoid-dot/printscreen-dotGame.png)
