@@ -74,7 +74,7 @@ date: 2017-07-26 15:02:01
 		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript">
 			var $container = $(window);
-			var topH = 50px; //顶部高度
+			var topH = 50; //顶部高度
 			var $backTop = $("#backTop"); //滚动到顶部的按钮元素
 	        //监听滚动条，只有当滚动条高度大于设定的顶部高度时才显示按钮
 	        $container.scroll(function () {
