@@ -73,28 +73,30 @@ date: 2017-07-26 15:02:01
 ```
 		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript">
-			var $container = $(window);
-			var topH = 50; //顶部高度
-			var $backTop = $("#backTop"); //滚动到顶部的按钮元素
-	        //监听滚动条，只有当滚动条高度大于设定的顶部高度时才显示按钮
-	        $container.scroll(function () {
-	            var afterScrollTop = $container.scrollTop();
-	            if (afterScrollTop >= topH) {
-	                $backTop.show();//显示按钮
-	            } else {
-	                $backTop.hide();//隐藏按钮
-	            }
-	        });
+			$(document).ready(function () {
+				var $container = $(window);
+				var topH = 50; //顶部高度
+				var $backTop = $("#backTop"); //滚动到顶部的按钮元素
+				//监听滚动条，只有当滚动条高度大于设定的顶部高度时才显示按钮
+				$container.scroll(function () {
+				    var afterScrollTop = $container.scrollTop();
+				    if (afterScrollTop >= topH) {
+				        $backTop.show();//显示按钮
+				    } else {
+				        $backTop.hide();//隐藏按钮
+				    }
+				});
+			});
 	
 			//点击了火箭按钮的回调，触发发射特效，页面滚动回顶部
-		    function backToTop(ele) {
-		        $(ele).addClass("launch");//触发发射特效
-		        setTimeout(function () {
-		            $('html,body').animate({scrollTop: 0}, 300);
-		            $(ele).removeClass("launch");//结束后取消发射特效
-		        }, 800);
-		    }
+			function backToTop(ele) {
+			    $(ele).addClass("launch");//触发发射特效
+			    setTimeout(function () {
+			        $('html,body').animate({scrollTop: 0}, 300);
+			        $(ele).removeClass("launch");//结束后取消发射特效
+			    }, 800);
+			}
 		</script>
 ```
-
+<a href="/link_html/rokets/index.html" target="_blank" style="color:red;">点我查看演示</a>
 完成了，去试试吧，火箭图片下载地址：[http://pan.baidu.com/s/1qYuhnJ2](http://pan.baidu.com/s/1qYuhnJ2 "火箭图片下载地址")
