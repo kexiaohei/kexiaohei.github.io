@@ -8,7 +8,7 @@ date: 2017-04-18 15:24:36
 <!--more-->
 
 ### 游戏体验
-<a href="/link_html/game_point.html" target="_blank" style="color:red;">开始游戏</a>
+<a href="/meSite/game_point.html" target="_blank" style="color:red;">开始游戏</a>
 
 ### 游戏代码
 
