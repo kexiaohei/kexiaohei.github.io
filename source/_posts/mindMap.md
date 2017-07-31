@@ -8,4 +8,4 @@ date: 2017-04-27 14:20:48
 
 <!--more-->
 (PS：图片内容太多，字小可能看不清。pc端的可以右击图片，选择在新的窗口打开，点击放大查看；移动端的可以双指向外滑动放大网页查看)
-![前端开发技能导图](/postSource/mindMap/mindMapByWeb.png)
+![前端开发技能导图](/postSource/mindMap/mindMapByWeb.jpg)
