@@ -16,7 +16,7 @@ date: 2017-07-26 15:02:01
 ### css代码
 使用了css3的animation属性，现在应兼容大部分浏览器，如遇不兼容，可自行搜索兼容写法    
 ```
-	    #backTop {
+		#backTop {
 		    position: fixed;
 		    bottom: 2rem;
 		    right: 1rem;

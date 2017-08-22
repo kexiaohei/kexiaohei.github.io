@@ -20,7 +20,7 @@ date: 2017-07-29 09:00:01
 	<link rel="stylesheet" type="text/css" href="droploaddist/dropload.css">
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript" src="droploaddist/dropload.min.js"></script>     
-``` 
+```
 
 html部分    
 ```
