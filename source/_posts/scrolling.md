@@ -9,14 +9,17 @@ date: 2017-07-29 10:19:01
 
 <!--more-->
  
-解决这个问题很简单，添加一个css属性-webkit-overflow-scrolling即可解决，明显提升滑动效果。代码如下：          
+解决这个问题很简单，添加一个css属性-webkit-overflow-scrolling即可解决，明显提升滑动效果。代码如下：
+          
 ```
 		.u-scroll {
 		    overflow: auto;
 		    -webkit-overflow-scrolling: touch;
 		}    
 ```     
-有强迫症的的童鞋可以这样写：    
+
+有强迫症的的童鞋可以这样写：   
+ 
 ```
 		.u-scroll {
 		    overflow: auto !important;
