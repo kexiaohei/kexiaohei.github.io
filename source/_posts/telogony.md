@@ -1,6 +1,6 @@
 ---
 title: 震惊！先父遗传
-categories: "杂谈"
+categories: "杂记"
 date: 2017-04-22 08:42:58
 ---
 
