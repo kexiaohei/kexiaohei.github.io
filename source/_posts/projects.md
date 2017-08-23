@@ -7,12 +7,12 @@ date: 2017-07-31 15:10:01
 
 <!--more-->
 ### 赢家策略（PC）
-http://touguvip.gotoip55.com （线上）  
+http://vip.tdtz888.com （线上）  
 用户：test  
 密码：test
       
 ### 赢家策略（手机）
-http://touguvip.gotoip55.com （线上）  
+http://vip.tdtz888.com （线上）  
 用户：test  
 密码：test
 
