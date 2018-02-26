@@ -1,0 +1,913 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next muse" lang="zh-Hans,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="柯小黑, 前端技术, 分享, 段子, 随缘" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="无缝滚动的代码很多，但我想要的一个滚动n条可以停顿一会再开始滚动，而且每条的长度都不一样，同时可以控制是否允许用户自己滑动。于是网上找了一个xMarquee.js然后加以修改，终于达到了我想要的效果。话不多说先贴上代码。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="横向无缝滚动（跑马灯）">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/ixMarquee/index.html">
+<meta property="og:site_name" content="柯小黑的异次元">
+<meta property="og:description" content="无缝滚动的代码很多，但我想要的一个滚动n条可以停顿一会再开始滚动，而且每条的长度都不一样，同时可以控制是否允许用户自己滑动。于是网上找了一个xMarquee.js然后加以修改，终于达到了我想要的效果。话不多说先贴上代码。">
+<meta property="og:updated_time" content="2018-02-23T08:56:28.798Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="横向无缝滚动（跑马灯）">
+<meta name="twitter:description" content="无缝滚动的代码很多，但我想要的一个滚动n条可以停顿一会再开始滚动，而且每条的长度都不一样，同时可以控制是否允许用户自己滑动。于是网上找了一个xMarquee.js然后加以修改，终于达到了我想要的效果。话不多说先贴上代码。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/21/ixMarquee/"/>
+
+
+
+
+
+  <title> 横向无缝滚动（跑马灯） | 柯小黑的异次元 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a52bbd3a0696b7e00173da33c91ca0b3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">柯小黑的异次元</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">兴之所至，心之所安；尽其在我，顺其自然。缘，妙不可言。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="输入关键字开始搜索..." autofocus="autofocus" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/ixMarquee/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柯小黑">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柯小黑的异次元">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                横向无缝滚动（跑马灯）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T22:44:14+08:00">
+                2017-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>无缝滚动的代码很多，但我想要的一个滚动n条可以停顿一会再开始滚动，而且每条的长度都不一样，同时可以控制是否允许用户自己滑动。于是网上找了一个xMarquee.js然后加以修改，终于达到了我想要的效果。话不多说先贴上代码。</p>
+<a id="more"></a>
+<h3 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-tag">ul</span>,<span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">	<span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">	<span class="attribute">list-style-type</span>:none;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">	<span class="attribute">background-color</span>:black;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scrollleft</span> &#123;</div><div class="line">	<span class="attribute">padding</span>:<span class="number">5px</span> <span class="number">20px</span> <span class="number">0px</span> <span class="number">20px</span>;</div><div class="line">	<span class="attribute">margin</span>:<span class="number">2px</span> auto;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scrollleft</span> <span class="selector-tag">ul</span> &#123;</div><div class="line">	<span class="attribute">width</span>:<span class="number">100000%</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scrollleft</span> <span class="selector-tag">li</span> &#123;</div><div class="line">	<span class="attribute">float</span>:left;</div><div class="line">	<span class="attribute">display</span>:inline;</div><div class="line">	<span class="attribute">text-align</span>:center;</div><div class="line">	<span class="attribute">line-height</span>:<span class="number">24px</span>;</div><div class="line">	<span class="attribute">color</span>:<span class="number">#FFFFFF</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scrollleft</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</div><div class="line">	<span class="attribute">margin-right</span>:<span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scrollleft</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">	<span class="attribute">color</span>:red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"scrollleft"</span>&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>00000000000<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>111111111111111<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>22222222222222222<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>333333333333333333333<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>444444444444444<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>5555555555555555<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>66666666666666666666<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>777777777777777<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>888888888888<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>99999999999999999<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>aaaaaaaaaaaa<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="html部分-1"><a href="#html部分-1" class="headerlink" title="html部分"></a>html部分</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * jquery ixMarquee</div><div class="line"> * 依赖于jquery.js</div><div class="line"> */</div><div class="line">(<span class="function"><span class="keyword">function</span><span class="params">($)</span> </span>&#123;</div><div class="line">    $.fn.ixMarquee = <span class="function"><span class="keyword">function</span><span class="params">(options)</span> </span>&#123;</div><div class="line">        <span class="keyword">var</span> del = &#123;</div><div class="line">            temp: <span class="number">-2</span>, <span class="comment">//滚动的长度，正整数的时候是向右滚动，负整数的时候是向左滚动（-2/2）</span></div><div class="line">            speed: <span class="number">50</span>, <span class="comment">//滚动的频率，单位为毫秒,数字越大速度越慢</span></div><div class="line">            num: <span class="number">2</span>, <span class="comment">//每滚动2条停顿一次</span></div><div class="line">            delay: <span class="number">5000</span>, <span class="comment">//一次停顿5000毫秒</span></div><div class="line">            onSlide: <span class="keyword">false</span>, <span class="comment">//是否可以手动滑动，true-是</span></div><div class="line">            backMarquee: <span class="function"><span class="keyword">function</span><span class="params">(id, content)</span> </span>&#123;&#125; <span class="comment">//每滑动完一条的回调函数 @param id-li的索引 content-li的html</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> options = $.extend(del, options);</div><div class="line">        <span class="keyword">var</span> xM = $(this);</div><div class="line">        <span class="keyword">var</span> backMarquee = del.backMarquee;</div><div class="line"></div><div class="line">        xM.each(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">var</span> fontW = <span class="number">0</span>;</div><div class="line">            <span class="keyword">var</span> t, o;</div><div class="line">            <span class="keyword">var</span> $root = $(this);</div><div class="line">            <span class="keyword">var</span> <span class="keyword">self</span> = $(this).find(<span class="string">"ul:first"</span>);</div><div class="line">            <span class="keyword">var</span> fli = <span class="keyword">self</span>.find(<span class="string">"li:first"</span>);</div><div class="line">            <span class="keyword">var</span> fla = <span class="keyword">self</span>.find(<span class="string">"li:last"</span>);</div><div class="line">            <span class="keyword">var</span> temp = parseInt(del.temp);</div><div class="line">            <span class="keyword">var</span> speed = parseInt(del.speed);</div><div class="line">            <span class="keyword">var</span> start = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.find(<span class="string">"li"</span>).length; i++) &#123;</div><div class="line">                <span class="keyword">self</span>.find(<span class="string">"li"</span>).eq(i).data(<span class="string">"index"</span>, i);</div><div class="line">                fontW += <span class="keyword">self</span>.find(<span class="string">"li"</span>).eq(i).width();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (fontW &lt; $(this).width()) &#123;</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125; <span class="comment">//判断如文字的长度小于显示框的长度，则不执行marquee</span></div><div class="line">            <span class="keyword">if</span> (temp &gt; <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">self</span>.css(&#123;</div><div class="line">                    marginLeft: -<span class="keyword">self</span>.find(<span class="string">"li:last"</span>).width()</div><div class="line">                &#125;);</div><div class="line">                <span class="keyword">self</span>.find(<span class="string">"li:last"</span>).prependTo(<span class="keyword">self</span>);</div><div class="line">                start = -<span class="keyword">self</span>.find(<span class="string">"li:first"</span>).width();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">marquee</span><span class="params">()</span> </span>&#123;</div><div class="line">                $root.css(<span class="string">'overflow'</span>, <span class="string">'hidden'</span>);</div><div class="line">                <span class="keyword">var</span> idex, num = del.num;</div><div class="line">                <span class="keyword">if</span> (temp &lt; <span class="number">0</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (-start &gt; fli.width()) &#123;</div><div class="line">                        start = <span class="number">0</span>;</div><div class="line">                        fli.appendTo(<span class="keyword">self</span>);</div><div class="line">                        idex = <span class="keyword">self</span>.find(<span class="string">"li:first"</span>).data(<span class="string">"index"</span>);</div><div class="line">                        backMarquee(idex, <span class="keyword">self</span>.find(<span class="string">"li:first"</span>).html());</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">if</span> (start &gt; <span class="number">0</span>) &#123;</div><div class="line">                        <span class="keyword">self</span>.find(<span class="string">"li:last"</span>).prependTo(<span class="keyword">self</span>);</div><div class="line">                        start = -<span class="keyword">self</span>.find(<span class="string">"li:first"</span>).width();</div><div class="line">                        idex = <span class="keyword">self</span>.find(<span class="string">"li"</span>).eq(<span class="number">1</span>).data(<span class="string">"index"</span>);</div><div class="line">                        backMarquee(idex, <span class="keyword">self</span>.find(<span class="string">"li"</span>).eq(<span class="number">1</span>).html());</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                fli = <span class="keyword">self</span>.find(<span class="string">"li:first"</span>);</div><div class="line">                <span class="keyword">self</span>.css(&#123;</div><div class="line">                    marginLeft: start</div><div class="line">                &#125;);</div><div class="line">                start = start + temp;</div><div class="line">                <span class="keyword">if</span> (idex % num == <span class="number">0</span>) &#123;</div><div class="line">                    reStart();</div><div class="line">                &#125; <span class="comment">//停顿处</span></div><div class="line">            &#125;</div><div class="line">            t = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">                marquee()</div><div class="line">            &#125;, speed);</div><div class="line">            $root.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">if</span> (o) &#123;</div><div class="line">                    clearTimeout(o);</div><div class="line">                    o = <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (t) &#123;</div><div class="line">                    clearInterval(t);</div><div class="line">                    t = <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (del.onSlide) &#123;</div><div class="line">                    $root.css(<span class="string">'overflow'</span>, <span class="string">'auto'</span>)</div><div class="line">                &#125;</div><div class="line">            &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">                t = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">                    marquee()</div><div class="line">                &#125;, speed);</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">reStart</span><span class="params">()</span> </span>&#123; <span class="comment">//停顿</span></div><div class="line">                clearInterval(t);</div><div class="line">                o = setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">                    t = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">                        marquee()</div><div class="line">                    &#125;, speed);</div><div class="line">                &#125;, del.delay)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;)(jQuery);</div><div class="line"></div><div class="line"><span class="comment">/*初始化*/</span></div><div class="line">$(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">    $(<span class="string">".scrollleft"</span>).ixMarquee(&#123;</div><div class="line">        backMarquee: <span class="function"><span class="keyword">function</span><span class="params">(id, con)</span> </span>&#123;</div><div class="line">            console.log(id + <span class="string">'**'</span> + con);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>记得先引入jquery;</li>
+<li>ul 宽度要设为10000%，要尽可能的大，是为了让所有的li都在一行，而不会排到下一行；</li>
+<li>不要给li加左右padding或者margin，否则一个li滑动到下一个li之间会很僵硬，这是宽度计算的问题。如果要使li之间有间隙，给其内部元素添加左右padding或者margin即可。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>为污污污污污污污污污污污污污污！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/pay_WeChatPay.png" alt="柯小黑 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/pay_Alipay.png" alt="柯小黑 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/22/telogony/" rel="next" title="震惊！先父遗传">
+                <i class="fa fa-chevron-left"></i> 震惊！先父遗传
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/19/box&flex/" rel="prev" title="box & flex">
+                box & flex <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="柯小黑" />
+          <p class="site-author-name" itemprop="name">柯小黑</p>
+           
+              <p class="site-description motion-element" itemprop="description">前端技术，各种好玩的技术，段子，八卦，杂谈，人生感悟，随性而为，随兴而发，随心分享，日常修仙</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS部分"><span class="nav-text">CSS部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html部分"><span class="nav-text">html部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html部分-1"><span class="nav-text">html部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-text">注意</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">柯小黑</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

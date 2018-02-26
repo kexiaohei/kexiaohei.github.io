@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+#backTop {
+    position: fixed;
+    bottom: 2rem;
+    right: 1rem;
+    display: none;
+    z-index: 99;
+    cursor: pointer;
+    border-radius: .2rem;
+    width: 8rem;
+    height: 15rem;
+    background: url("../image/rocket/rocket_button_up_01.png") no-repeat 0 0;
+    background-size: contain;
+}
+
+#backTop:hover {
+    background-image: url("../image/rocket/rocket_button_up_02.png");
+}
+
+#backTop.launch {
+    -webkit-animation: launch 1s ease-in-out;
+    -o-animation: launch 1s ease-in-out;
+    animation: launch 1s ease-in-out;
+}
+
+@-moz-keyframes launch {
+    0% {
+        background-image: url("../image/rocket/rocket_button_up_03.png");
+        bottom: 2rem;
+    }
+    15% {
+        background-image: url("../image/rocket/rocket_button_up_04.png");
+        bottom: 2rem;
+    }
+    30% {
+        background-image: url("../image/rocket/rocket_button_up_05.png");
+        bottom: 2rem;
+    }
+    45% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 2rem;
+    }
+    100% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 1200px;
+    }
+}
+
+@-o-keyframes launch {
+    0% {
+        background-image: url("../image/rocket/rocket_button_up_03.png");
+        bottom: 2rem;
+    }
+    15% {
+        background-image: url("../image/rocket/rocket_button_up_04.png");
+        bottom: 2rem;
+    }
+    30% {
+        background-image: url("../image/rocket/rocket_button_up_05.png");
+        bottom: 2rem;
+    }
+    45% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 2rem;
+    }
+    100% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 1200px;
+    }
+}
+
+@-webkit-keyframes launch {
+    0% {
+        background-image: url("../image/rocket/rocket_button_up_03.png");
+        bottom: 2rem;
+    }
+    15% {
+        background-image: url("../image/rocket/rocket_button_up_04.png");
+        bottom: 2rem;
+    }
+    30% {
+        background-image: url("../image/rocket/rocket_button_up_05.png");
+        bottom: 2rem;
+    }
+    45% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 2rem;
+    }
+    100% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 1200px;
+    }
+}
+
+@keyframes launch {
+    0% {
+        background-image: url("../image/rocket/rocket_button_up_03.png");
+        bottom: 2rem;
+    }
+    15% {
+        background-image: url("../image/rocket/rocket_button_up_04.png");
+        bottom: 2rem;
+    }
+    30% {
+        background-image: url("../image/rocket/rocket_button_up_05.png");
+        bottom: 2rem;
+    }
+    45% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 2rem;
+    }
+    100% {
+        background-image: url("../image/rocket/rocket_button_up_06.png");
+        bottom: 1200px;
+    }
+}
