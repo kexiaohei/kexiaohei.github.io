@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[数组的复制]]></title>
+      <url>%2F2018%2F04%2F04%2FarrObjectCopy%2F</url>
+      <content type="text"><![CDATA[数组是对象，属于引用类型，简单的赋值只是添加了一个指向数组的指针。当改变新的赋值对象时，原有的数组也会被改变。 简单的赋值 错误的复制1234var a = [1,2,3];var b = a; //a赋值给b，因为数组是对象，属于引用类型，此处只是添加了一个指向数组的指针b.push(4); //向b中添加一个新的元素console.log(a，b)； //结果都是[1,2,3,4]，a也被改变了 正确的复制1234var a = [1,2,3];var b = a.slice();//取出a中的所有元素，赋值给bb.push(4); //向b中添加一个新的元素console.log(a，b)； //结果都是[1,2,3]，[1,2,3,4]，只有b被改变]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[love]]></title>
       <url>%2F2018%2F03%2F15%2Flove%2F</url>
       <content type="text"><![CDATA[love（代码来源：http://www.jq22.com） 爱情是个什么玩意儿樱花飘舞表白动画]]></content>
