@@ -47,7 +47,7 @@ transform定义2D/3D转换，可以同时定义多个转换
 	
 ### 解决问题
 闲话不多说，这里附上一个<a href="/meSite/multi-transform.html" target="_blank" style="color:red;">demo</a>，详看代码。     
-#### css：
+#### css
 	
 	#test {
             --scale: 1; /*定义缩放系数*/
@@ -66,7 +66,7 @@ transform定义2D/3D转换，可以同时定义多个转换
             background-color: #0c60ee;
             transform: scale(var(--scale)) rotate(var(--rotate)) rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ));
         }
-#### html：
+#### html
 
 	<input type="range" min="1" max="200" value="100" oninput="scale(this.value)">放大/缩小<br/>
 	<input type="range" min="0" max="360" value="0" oninput="rotate(this.value)">2D旋转<br/>
